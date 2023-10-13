@@ -50,4 +50,13 @@ Compiling 1 file (.ex)
 Finished in 0.03 seconds (0.00s async, 0.03s sync)
 2 doctests, 6 tests, 0 failures
 
+
+mix run
+Compiling 1 file (.ex)
+{:error, "1000 is invalid denomination"}
+%{"Aqua" => 1}
+%{"Aqua" => 2}
+%{"Cola" => 1}
+%{"Milo" => 1}
+%{"Coffee" => 1, "Sosro" => 1}
 ```

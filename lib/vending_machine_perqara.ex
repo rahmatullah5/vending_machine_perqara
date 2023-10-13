@@ -63,6 +63,15 @@ defmodule VendingMachinePerqara do
   defp buy_products(_balance, purchased_products), do: purchased_products
 end
 
+{:error, "1000 is invalid denomination"} = VendingMachinePerqara.run([1000]) |> IO.inspect()
+%{"Aqua" => 1} = VendingMachinePerqara.run([2000]) |> IO.inspect()
+%{"Aqua" => 2} = VendingMachinePerqara.run([2000, 2000]) |> IO.inspect()
+%{"Cola" => 1} = VendingMachinePerqara.run([5000, 2000]) |> IO.inspect()
+%{"Milo" => 1} = VendingMachinePerqara.run([5000, 5000]) |> IO.inspect()
+
+%{"Coffee" => 1, "Sosro" => 1} =
+  VendingMachinePerqara.run([5000, 5000, 5000, 2000]) |> IO.inspect()
+
 defmodule VendingMachinePerqaraSlidingWindow do
   @moduledoc """
   Similar to `VendingMachinePerqara`, this module performs vending machine transactions. However,
@@ -136,3 +145,14 @@ defmodule VendingMachinePerqaraSlidingWindow do
     end
   end
 end
+
+{:error, "1000 is invalid denomination"} =
+  VendingMachinePerqaraSlidingWindow.run([1000]) |> IO.inspect()
+
+%{"Aqua" => 1} = VendingMachinePerqaraSlidingWindow.run([2000]) |> IO.inspect()
+%{"Aqua" => 2} = VendingMachinePerqaraSlidingWindow.run([2000, 2000]) |> IO.inspect()
+%{"Cola" => 1} = VendingMachinePerqaraSlidingWindow.run([5000, 2000]) |> IO.inspect()
+%{"Milo" => 1} = VendingMachinePerqaraSlidingWindow.run([5000, 5000]) |> IO.inspect()
+
+%{"Coffee" => 1, "Sosro" => 1} =
+  VendingMachinePerqaraSlidingWindow.run([5000, 5000, 5000, 2000]) |> IO.inspect()
